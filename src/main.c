@@ -6,7 +6,7 @@
 /*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:00:05 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/04 20:24:42 by anakin           ###   ########.fr       */
+/*   Updated: 2025/04/04 20:46:03 by anakin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_mandelbrot_structs(t_maped *map, t_complx *complxx_num)
 	complxx_num->real = 0;
 }
 
-void	clac_pixel(t_complx z, t_complx c)
+void	clac_pixel(t_complx z, t_complx c, t_cords cords, mlx_image_t *img)
 {
 	int i;
 	t_complx	temp;
@@ -55,14 +55,12 @@ void	clac_pixel(t_complx z, t_complx c)
 		i++;
 	}
 	if (i == MAX_ITER)
-		write(1, "*", 1);
-		// mlx_put_pixel(img, cords.x, cords.y, 0x000000ff);
+		mlx_put_pixel(img, cords.x, cords.y, 0x000000ff);
 	else
-		write(1, " ", 1);
-		// mlx_put_pixel(img, cords.x, cords.y, 0xffffffff);
+		mlx_put_pixel(img, cords.x, cords.y, 0xffffffff);
 }
 
-void    print_fractol(void)
+void    print_fractol(mlx_image_t *img)
 {
     t_cords     cords;
     t_maped     map;
@@ -77,7 +75,7 @@ void    print_fractol(void)
         while (cords.x < WIDTH)
         {
             c = calculate_c(map, cords);
-            clac_pixel(z, c);
+            clac_pixel(z, c, cords, img);
             cords.x++;
         }
         write(1, "\n", 1);
@@ -85,22 +83,17 @@ void    print_fractol(void)
     }
 }
 
-int main(void)
+int32_t main(void)
 {
-	print_fractol();
-	return (0);
+    mlx_set_setting(MLX_MAXIMIZED, true);
+    mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "42Balls", false);
+    if (!mlx)
+        return (1);
+    mlx_image_t* img = mlx_new_image(mlx, WIDTH, HEIGHT);
+    if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
+        return (free(mlx), free(img), 1);
+    print_fractol(img);
+    mlx_loop(mlx);
+    mlx_terminate(mlx);
+    return (EXIT_SUCCESS);
 }
-
-
-// int32_t	main(int ac, char **av)
-// {
-// 	mlx_set_setting(MLX_MAXIMIZED, true);
-// 	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
-// 	if (!mlx)
-// 		return (1);
-// 	mlx_image_t* img = mlx_new_image(mlx, 256, 256);
-// 	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
-// 		return (free(mlx), free(img), 1);
-// 	mlx_terminate(mlx);
-// 	return (EXIT_SUCCESS);
-// }

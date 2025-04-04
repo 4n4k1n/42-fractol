@@ -6,7 +6,7 @@
 /*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/04 20:26:00 by anakin           ###   ########.fr       */
+/*   Updated: 2025/04/04 20:47:01 by anakin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 # include <math.h>
 
 # ifndef WIDTH
-#  define WIDTH 100
+#  define WIDTH 700
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 100
+#  define HEIGHT 700
 # endif
 
 # ifndef MAX_ITER
-#  define MAX_ITER 50
+#  define MAX_ITER 150
 # endif
 
 typedef struct s_complx
