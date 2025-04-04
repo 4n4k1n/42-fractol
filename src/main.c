@@ -6,55 +6,101 @@
 /*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:00:05 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/03 21:42:48 by anakin           ###   ########.fr       */
+/*   Updated: 2025/04/04 20:24:42 by anakin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-int	check_set(double real, double imag, int iter, int max_iter)
+t_complx	calculate_c(t_maped map, t_cords cords)
 {
-	if (pow(real, 2) + pow(imag, 2) < 4 && iter < max_iter)
-		return (1);
+	t_complx complx;
+
+	complx.real = map.min_x + (map.max_x - map.min_x) * cords.x / (WIDTH - 1);
+	complx.imag = map.min_y + (map.max_y - map.min_y) * cords.y / (HEIGHT - 1);
+	return (complx);
+}
+
+t_complx	calc_next_iter_num(t_complx z, t_complx c)
+{
+	t_complx	new_z;
+
+	new_z.real = pow(z.real, 2) - pow(z.imag, 2) + c.real;
+	new_z.imag = z.real * z.imag + c.imag;
+	return (new_z);
+}
+
+void	init_mandelbrot_structs(t_maped *map, t_complx *complxx_num)
+{
+	map->min_x = -2;
+	map->max_x = 1;
+	map->min_y = -1.5;
+	map->max_y = 1.5;
+	complxx_num->imag = 0;
+	complxx_num->real = 0;
+}
+
+void	clac_pixel(t_complx z, t_complx c)
+{
+	int i;
+	t_complx	temp;
+	
+	i = 0;
+	while (pow(z.real, 2) + pow(z.imag, 2) < 4 && i < MAX_ITER)
+	{
+		temp.real = pow(z.real, 2) - pow(z.imag, 2) + c.real;
+		temp.imag = 2 * z.real * z.imag + c.imag;
+		z.real = temp.real;
+		z.imag = temp.imag;
+		i++;
+	}
+	if (i == MAX_ITER)
+		write(1, "*", 1);
+		// mlx_put_pixel(img, cords.x, cords.y, 0x000000ff);
+	else
+		write(1, " ", 1);
+		// mlx_put_pixel(img, cords.x, cords.y, 0xffffffff);
+}
+
+void    print_fractol(void)
+{
+    t_cords     cords;
+    t_maped     map;
+    t_complx    c;
+    t_complx    z;
+
+    init_mandelbrot_structs(&map, &z);
+    cords.y = 0;
+    while (cords.y < HEIGHT)
+    {
+        cords.x = 0;
+        while (cords.x < WIDTH)
+        {
+            c = calculate_c(map, cords);
+            clac_pixel(z, c);
+            cords.x++;
+        }
+        write(1, "\n", 1);
+        cords.y++;
+    }
+}
+
+int main(void)
+{
+	print_fractol();
 	return (0);
 }
 
 
-t_complx	calc_next_complx_num(t_complx old_complx, t_complx complx)
-{
-	t_complx	new_complx;
-
-	new_complx.real = pow(old_complx.real, 2) - pow(old_complx.imag, 2) + complx.real;
-	new_complx.imag = old_complx.real * old_complx.imag +complx.imag;
-	return (new_complx);
-}
-
-void	print_fractol(int height, int width, void (*f)(void *))
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < height)
-	{
-		j = 0;
-		while (j < width)
-		{
-			
-		}
-	}
-}
-
-
-int32_t	main(int ac, char **av)
-{
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
-	if (!mlx)
-		return (1);
-	mlx_image_t* img = mlx_new_image(mlx, 256, 256);
-	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
-		return (free(mlx), free(img), 1);
-	mlx_terminate(mlx);
-	return (EXIT_SUCCESS);
-}
+// int32_t	main(int ac, char **av)
+// {
+// 	mlx_set_setting(MLX_MAXIMIZED, true);
+// 	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
+// 	if (!mlx)
+// 		return (1);
+// 	mlx_image_t* img = mlx_new_image(mlx, 256, 256);
+// 	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
+// 		return (free(mlx), free(img), 1);
+// 	mlx_terminate(mlx);
+// 	return (EXIT_SUCCESS);
+// }
