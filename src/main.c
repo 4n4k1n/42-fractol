@@ -6,7 +6,7 @@
 /*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:00:05 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/04 20:46:03 by anakin           ###   ########.fr       */
+/*   Updated: 2025/04/05 06:03:45 by anakin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ t_complx	calc_next_iter_num(t_complx z, t_complx c)
 void	init_mandelbrot_structs(t_maped *map, t_complx *complxx_num)
 {
 	map->min_x = -2;
-	map->max_x = 1;
-	map->min_y = -1.5;
-	map->max_y = 1.5;
+	map->max_x = 2;
+	map->min_y = -2;
+	map->max_y = 2;
 	complxx_num->imag = 0;
 	complxx_num->real = 0;
 }
