@@ -6,12 +6,12 @@
 #    By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 20:58:57 by anakin            #+#    #+#              #
-#    Updated: 2025/04/11 13:57:21 by apregitz         ###   ########.fr        #
+#    Updated: 2025/04/11 22:48:10 by apregitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= fractol
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS	:= -Wunreachable-code -Ofast
 LIBMLX	:= ./MLX42
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
