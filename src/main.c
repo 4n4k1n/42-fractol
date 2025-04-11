@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:00:05 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/05 06:03:45 by anakin           ###   ########.fr       */
+/*   Updated: 2025/04/11 22:17:25 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,31 @@ t_complx	calculate_c(t_maped map, t_cords cords)
 	return (complx);
 }
 
+void	calc_zoomed_pix(t_zoom *zoom, t_cords *cords, t_cords *new_cords)
+{
+	new_cords->x = cords->x - (zoom->win_width / 2) * zoom->scale + zoom->view_x;
+	new_cords->y = cords->y - (zoom->win_height / 2) * zoom->scale + zoom->view_y; 
+}
+
+void	zoom_in(t_cords *mouse, t_zoom *zoom, t_cords *pixel)
+{
+	t_cords	temp;
+	t_cords	new;
+	
+	calc_zoomed_pix(zoom, pixel, &temp);
+	zoom->scale *= 0.95;
+	calc_zoomed_pix(zoom, pixel, &new);
+	zoom->view_x += (temp.x - new.x);
+	zoom->view_y += (temp.y - new.y); 
+}
+
+void	zoom_out(t_cords *mouse, t_zoom *zoom, t_cords *pixel)
+{
+	t_cords	temp;
+	t_cords	new;
+	
+	calc_zoomed_pix(zoom, pixel, &temp);
+	zoom->scale *= 1.05;
 t_complx	calc_next_iter_num(t_complx z, t_complx c)
 {
 	t_complx	new_z;

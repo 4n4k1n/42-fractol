@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anakin <anakin@student.42.fr>              +#+  +:+       +#+         #
+#    By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 20:58:57 by anakin            #+#    #+#              #
-#    Updated: 2025/04/04 17:21:13 by anakin           ###   ########.fr        #
+#    Updated: 2025/04/11 13:57:21 by apregitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= Game
+NAME	:= fractol
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./MLX42
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/05 06:02:44 by anakin           ###   ########.fr       */
+/*   Updated: 2025/04/11 14:43:11 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ typedef struct s_complx
     double  real;
     double  imag;
 }           t_complx;
+
+typedef struct s_zoom
+{
+	double  view_x;
+    double  view_y;
+	double  n;
+    double  win_width;
+    double  win_height;
+    double  scale;
+}			t_zoom;
 
 typedef struct s_maped
 {
