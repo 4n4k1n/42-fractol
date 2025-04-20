@@ -6,7 +6,7 @@
 #    By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 20:58:57 by anakin            #+#    #+#              #
-#    Updated: 2025/04/13 20:14:32 by apregitz         ###   ########.fr        #
+#    Updated: 2025/04/20 19:32:56 by apregitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,19 @@ LIBMLX	:= ./MLX42
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRCS	:= $(shell find ./src -iname "*.c")
-OBJS	:= ${SRCS:.c=.o}
+
+SRC_DIR = src
+OBJ_DIR = obj
+
+SRCS	:= arguments.c \
+			calc.c \
+			func_ptr.c \
+			key_zoom_hook.c \
+			main.c \
+			resize_hook.c \
+			zoom.c
+
+OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 all: libmlx $(NAME)
 
@@ -27,7 +38,13 @@ libmlx:
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
-$(NAME): $(OBJS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c fractol.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(NAME): $(OBJ_DIR) $(OBJS)
 	$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
@@ -39,4 +56,4 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all, clean, fclean, re, libmlx
+.PHONY: all clean fclean re libmlx
