@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/20 15:51:15 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:31:03 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		clac_pixel(t_complx z, t_complx c, t_cords cords, t_data *img);
 void		print_fractol(t_data *data);
 
 void		key_zoom_hook(mlx_key_data_t keydata, void *param);
-void		key_move_hook(mlx_key_data_t keys, void *param);
+void		resize_window(int32_t width, int32_t height, void *param);
 
 void		mandelbrot(t_data *data, t_cords cords, t_complx *z, t_complx *c);
 void		julia(t_data *data, t_cords cords, t_complx *z, t_complx *c);
