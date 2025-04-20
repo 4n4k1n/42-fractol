@@ -6,20 +6,11 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:11:02 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/14 10:54:49 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/20 11:48:07 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-
-t_complx	calculate_c(t_maped map, t_cords cords)
-{
-	t_complx	complx;
-
-	complx.real = map.min_x + (map.max_x - map.min_x) * cords.x / (WIDTH - 1);
-	complx.imag = map.min_y + (map.max_y - map.min_y) * cords.y / (HEIGHT - 1);
-	return (complx);
-}
 
 t_complx	calc_next_iter_num(t_complx z, t_complx c)
 {
@@ -30,17 +21,25 @@ t_complx	calc_next_iter_num(t_complx z, t_complx c)
 	return (new_z);
 }
 
-void	init_mandelbrot_structs(t_maped *map, t_complx *complxx_num)
+uint32_t	calc_byte(int i, int add)
 {
-	map->min_x = -2;
-	map->max_x = 2;
-	map->min_y = -2;
-	map->max_y = 2;
-	complxx_num->imag = 0;
-	complxx_num->real = 0;
+	uint32_t	byte;
+
+	byte = (255 + add) - ((i * 256) / MAX_ITER);
+	return (byte);
 }
 
-void	clac_pixel(t_complx z, t_complx c, t_cords cords, mlx_image_t *img)
+uint32_t	calc_color(int i)
+{
+	uint32_t	color;
+
+	if (i == MAX_ITER)
+		return (0x000000ff);
+	color = (((calc_byte(i, 100) << 24 | calc_byte(i, 120) << 16) | calc_byte(i, 80) << 8) | 0xff);
+	return (color);
+}
+
+void	clac_pixel(t_complx z, t_complx c, t_cords cords, t_data *data)
 {
 	int			i;
 	t_complx	temp;
@@ -54,8 +53,5 @@ void	clac_pixel(t_complx z, t_complx c, t_cords cords, mlx_image_t *img)
 		z.imag = temp.imag;
 		i++;
 	}
-	if (i == MAX_ITER)
-		mlx_put_pixel(img, cords.x, cords.y, 0x000000ff);
-	else
-		mlx_put_pixel(img, cords.x, cords.y, 0xffffffff);
+	mlx_put_pixel(data->img, cords.x, cords.y, calc_color(i));
 }
