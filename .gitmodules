@@ -1,6 +1,0 @@
-[submodule "42-libft"]
-	path = 42-libft
-	url = https://github.com/4n4k1n/42-libft.git
-[submodule "MLX42"]
-	path = MLX42
-	url = https://github.com/codam-coding-college/MLX42.git

@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anakin <anakin@student.42.fr>              +#+  +:+       +#+         #
+#    By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 20:58:57 by anakin            #+#    #+#              #
-#    Updated: 2025/04/04 17:21:13 by anakin           ###   ########.fr        #
+#    Updated: 2025/04/13 20:14:32 by apregitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= Game
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+NAME	:= fractol
+CFLAGS	:= -Wall -Wextra -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./MLX42
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
@@ -25,17 +25,17 @@ libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
+	$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+	$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
-	@rm -rf $(OBJS)
-	@rm -rf $(LIBMLX)/build
+	rm -rf $(OBJS)
+	rm -rf $(LIBMLX)/build
 
 fclean: clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re: clean all
 

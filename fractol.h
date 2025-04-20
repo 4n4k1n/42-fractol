@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/05 06:02:44 by anakin           ###   ########.fr       */
+/*   Updated: 2025/04/20 11:47:00 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,35 +20,65 @@
 # include <math.h>
 
 # ifndef WIDTH
-#  define WIDTH 700
+#  define WIDTH 500
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 700
-# endif
+#  define HEIGHT 500
+#endif
 
 # ifndef MAX_ITER
-#  define MAX_ITER 100
+#  define MAX_ITER 256
 # endif
 
 typedef struct s_complx
 {
-    double  real;
-    double  imag;
-}           t_complx;
-
-typedef struct s_maped
-{
-    double  min_x;
-    double  max_x;
-    double  min_y;
-    double  max_y;
-}           t_maped;
+	double	real;
+	double	imag;
+}			t_complx;
 
 typedef struct s_cords
 {
-    double  x;
-    double  y;
-}           t_cords;
+	int	x;
+	int	y;
+}		t_cords;
+
+typedef struct s_zoom
+{
+	double	scale;
+	double	view_x;
+	double	view_y;
+	int		win_width;
+	int		win_height;
+	int		mouse_status;
+}			t_zoom;
+
+typedef struct s_rgb
+{
+	int			r;
+	int			g;
+	int			b;
+	uint32_t	color;
+}		t_rgb;
+
+typedef struct s_data
+{
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	t_zoom		zoom;
+	t_rgb		rgb;
+}				t_data;
+
+int			check_arguments(int ac, char **av);
+t_complx	calc_zoomed_pix(t_zoom *zoom, t_cords cords);
+void		init_zoom(t_zoom *zoom);
+void		zoom_in(t_cords *mouse, t_zoom *zoom);
+void		zoom_out(t_cords *mouse, t_zoom *zoom);
+t_complx	calc_next_iter_num(t_complx z, t_complx c);
+void		clac_pixel(t_complx z, t_complx c, t_cords cords, t_data *img);
+void		print_fractol(t_data *data);
+
+void		key_zoom_hook(mlx_key_data_t keydata, void *param);
+void		key_move_hook(mlx_key_data_t keys, void *param);
 
 #endif
