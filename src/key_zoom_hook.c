@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 16:39:51 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/20 11:45:28 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:18:27 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	key_zoom_hook(mlx_key_data_t keys, void *param)
 	t_cords	middle;
 
 	data = param;
-	middle.x = WIDTH / 2;
-	middle.y = HEIGHT / 2;
+	middle.x = data->zoom.win_width / 2;
+	middle.y = data->zoom.win_height / 2;
 	if (keys.action == MLX_PRESS)
 	{
 		if (keys.key == MLX_KEY_ESCAPE)
@@ -31,7 +31,7 @@ void	key_zoom_hook(mlx_key_data_t keys, void *param)
 			else
 				zoom_out(&middle, &data->zoom);
 			mlx_delete_image(data->mlx, data->img);
-			data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+			data->img = mlx_new_image(data->mlx, data->zoom.win_width, data->zoom.win_height);
 			mlx_image_to_window(data->mlx, data->img, 0, 0);
 			print_fractol(data);
 		}
@@ -46,7 +46,7 @@ void	key_zoom_hook(mlx_key_data_t keys, void *param)
 			else
 				data->zoom.view_x -= 15 * data->zoom.scale;
 			mlx_delete_image(data->mlx, data->img);
-			data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+			data->img = mlx_new_image(data->mlx, data->zoom.win_width, data->zoom.win_height);
 			mlx_image_to_window(data->mlx, data->img, 0, 0);
 			print_fractol(data);
 		}
