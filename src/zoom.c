@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:08:54 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/16 12:15:29 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:26:55 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,6 @@ t_complx	calc_zoomed_pix(t_zoom *zoom, t_cords cords)
 	* zoom->scale + zoom->view_y;
 	return (new_cords);
 }
-
-// void	calculate_zoomed_map(t_zoom *zoom, t_maped *map)
-// {
-// 	t_complx	top_left;
-// 	t_complx	bottom_right;
-
-// 	top_left.real = 0;
-// 	top_left.imag = 0;
-// 	bottom_right.real = WIDTH - 1;
-// 	bottom_right.imag = HEIGHT - 1;
-// 	top_left = calc_zoomed_pix(zoom, top_left);
-// 	bottom_right = calc_zoomed_pix(zoom, bottom_right);
-// 	map->min_x = org.min_x + (org.max_x - org.min_x) \
-// 	* top_left.real / (WIDTH - 1);
-// 	map->max_x = org.min_x + (org.max_x - org.min_x) \
-// 	* bottom_right.real / (WIDTH - 1);
-// 	map->min_y = org.min_y + (org.max_y - org.min_y) \
-// 	* top_left.imag / (HEIGHT - 1);
-// 	map->max_y = org.min_y + (org.max_y - org.min_y) \
-// 	* bottom_right.imag / (HEIGHT - 1);
-// }
 
 void	init_zoom(t_zoom *zoom)
 {
