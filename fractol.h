@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/20 17:31:03 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/21 18:47:33 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ typedef struct s_data
     t_func_ptr  func_ptr;
 }               t_data;
 
+// helpers
+int			ft_strcmp(const char *s1, const char *s2);
+int			ft_atof(char *str, double *result);
+
+// fractol functions
 int			check_arguments(int ac, char **av, t_data *data);
 t_complx	calc_zoomed_pix(t_zoom *zoom, t_cords cords);
 void		init_zoom(t_zoom *zoom);
@@ -83,10 +88,16 @@ t_complx	calc_next_iter_num(t_complx z, t_complx c);
 void		clac_pixel(t_complx z, t_complx c, t_cords cords, t_data *img);
 void		print_fractol(t_data *data);
 
+// hooks
 void		key_zoom_hook(mlx_key_data_t keydata, void *param);
 void		resize_window(int32_t width, int32_t height, void *param);
 
+// functions for func ptr
 void		mandelbrot(t_data *data, t_cords cords, t_complx *z, t_complx *c);
 void		julia(t_data *data, t_cords cords, t_complx *z, t_complx *c);
+
+// functions to store the complex nbr
+t_complx	*get_set(void);
+void		init_set(double real, double imag);
 
 #endif

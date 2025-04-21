@@ -6,7 +6,7 @@
 #    By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 20:58:57 by anakin            #+#    #+#              #
-#    Updated: 2025/04/20 19:32:56 by apregitz         ###   ########.fr        #
+#    Updated: 2025/04/21 18:34:14 by apregitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRCS	:= arguments.c \
 			key_zoom_hook.c \
 			main.c \
 			resize_hook.c \
-			zoom.c
+			zoom.c \
+			ft_strcmp.c \
+			ft_atof.c
 
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
