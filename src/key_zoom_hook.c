@@ -6,11 +6,31 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 16:39:51 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/22 04:16:51 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/22 04:42:06 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
+
+static void	zoom_keys(mlx_key_data_t keys, t_data *data, t_cords middle)
+{
+	if (keys.key == MLX_KEY_EQUAL)
+		zoom_in(&middle, &data->zoom);
+	else if (keys.key == MLX_KEY_MINUS)
+		zoom_out(&middle, &data->zoom);
+}
+
+static void	move_keys(mlx_key_data_t keys, t_data *data)
+{
+	if (keys.key == MLX_KEY_W)
+		data->zoom.view_y -= 15 * data->zoom.scale;
+	else if (keys.key == MLX_KEY_S)
+		data->zoom.view_y += 15 * data->zoom.scale;
+	else if (keys.key == MLX_KEY_D)
+		data->zoom.view_x += 15 * data->zoom.scale;
+	else if (keys.key == MLX_KEY_D)
+		data->zoom.view_x -= 15 * data->zoom.scale;
+}
 
 void	key_zoom_hook(mlx_key_data_t keys, void *param)
 {
@@ -24,24 +44,8 @@ void	key_zoom_hook(mlx_key_data_t keys, void *param)
 	{
 		if (keys.key == MLX_KEY_ESCAPE)
 			return (mlx_close_window(data->mlx));
-		else if (keys.key == MLX_KEY_EQUAL || keys.key == MLX_KEY_MINUS)
-		{
-			if (keys.key == MLX_KEY_EQUAL)
-				zoom_in(&middle, &data->zoom);
-			else
-				zoom_out(&middle, &data->zoom);
-		}
-		if (keys.key == MLX_KEY_W || keys.key == MLX_KEY_S || keys.key == MLX_KEY_A || keys.key == MLX_KEY_D)
-		{
-			if (keys.key == MLX_KEY_W)
-				data->zoom.view_y -= 15 * data->zoom.scale;
-			else if (keys.key == MLX_KEY_S)
-				data->zoom.view_y += 15 * data->zoom.scale;
-			else if (keys.key == MLX_KEY_D)
-				data->zoom.view_x += 15 * data->zoom.scale;
-			else
-				data->zoom.view_x -= 15 * data->zoom.scale;
-		}
+		zoom_keys(keys, data, middle);
+		move_keys(keys, data);
 		if (keys.key == MLX_KEY_R)
 			data->rgb.rainbow *= -1;
 		mlx_delete_image(data->mlx, data->img);
