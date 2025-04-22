@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/22 04:01:16 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/22 05:16:07 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #endif
 
 # ifndef MAX_ITER
-#  define MAX_ITER 64
+#  define MAX_ITER 128
 # endif
 
 typedef struct s_complx
