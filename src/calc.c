@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:11:02 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/20 11:48:07 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/22 04:20:39 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,41 @@ t_complx	calc_next_iter_num(t_complx z, t_complx c)
 	return (new_z);
 }
 
-uint32_t	calc_byte(int i, int add)
+int get_byte(int i)
 {
-	uint32_t	byte;
-
-	byte = (255 + add) - ((i * 256) / MAX_ITER);
-	return (byte);
+	return ((i * 255 / MAX_ITER));
 }
 
-uint32_t	calc_color(int i)
+int	get_color(int i, t_data *data)
 {
-	uint32_t	color;
+	double	zoom_factor;
+	t_rgb	color;
 
 	if (i == MAX_ITER)
 		return (0x000000ff);
-	color = (((calc_byte(i, 100) << 24 | calc_byte(i, 120) << 16) | calc_byte(i, 80) << 8) | 0xff);
-	return (color);
-}
-
-void	clac_pixel(t_complx z, t_complx c, t_cords cords, t_data *data)
-{
-	int			i;
-	t_complx	temp;
-
-	i = 0;
-	while (pow(z.real, 2) + pow(z.imag, 2) < 4 && i < MAX_ITER)
+	if (data->rgb.rainbow == 1)
 	{
-		temp.real = pow(z.real, 2) - pow(z.imag, 2) + c.real;
-		temp.imag = 2 * z.real * z.imag + c.imag;
-		z.real = temp.real;
-		z.imag = temp.imag;
-		i++;
+		zoom_factor = -log10(data->zoom.scale) * 5;
+		color.r = get_byte(i * (4 + sin(zoom_factor * 1.2) * 4));
+		color.g = get_byte(i * (8 + cos(zoom_factor * 0.7) * 4));
+		color.b = get_byte(i * (12 + sin(zoom_factor * 0.9) * 4));
+		return (color.r << 24 | color.g << 16 | color.b << 8 | 0xf0);
 	}
-	mlx_put_pixel(data->img, cords.x, cords.y, calc_color(i));
+	return (get_byte(i) << 24 | get_byte(i) << 16 | get_byte(i) << 8 | 0xf0);
 }
+
+	void	clac_pixel(t_complx z, t_complx c, t_cords cords, t_data *data)
+	{
+		int			i;
+		t_complx	temp;
+
+		i = -1;
+		while (pow(z.real, 2) + pow(z.imag, 2) < 4 && ++i < MAX_ITER)
+		{
+			temp.real = pow(z.real, 2) - pow(z.imag, 2) + c.real;
+			temp.imag = 2 * z.real * z.imag + c.imag;
+			z.real = temp.real;
+			z.imag = temp.imag;
+		}
+		mlx_put_pixel(data->img, cords.x, cords.y, get_color(i, data));
+	}
