@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:00:05 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/20 17:22:16 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/22 04:05:55 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int ac, char **av)
 
 	if (!check_arguments(ac, av, &data))
 		return (1);
+	data.rgb.rainbow = -1;
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	data.mlx = mlx_init(WIDTH, HEIGHT, "Fractol", true);
 	if (!data.mlx)
