@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/22 05:16:07 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:03:12 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,20 @@ typedef struct s_zoom
 	int		mouse_status;
 }			t_zoom;
 
+typedef struct s_color_byte
+{
+	double	color;
+	int		state;
+}			t_color_byte;
+
 typedef struct s_rgb
 {
-	int			r;
-	int			g;
-	int			b;
-	int			rainbow;
-}		t_rgb;
+	t_color_byte	r;
+	t_color_byte	g;
+	t_color_byte	b;
+	int				rainbow;
+	int				mode;
+}					t_rgb;
 
 struct s_data;
 
