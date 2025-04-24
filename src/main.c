@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:00:05 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/23 14:45:42 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/24 21:25:08 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
+	init_set(-0.7, 0.27015);
 	if (!check_arguments(ac, av, &data))
 		return (1);
 	data.rgb.rainbow = -1;
@@ -56,7 +57,7 @@ int	main(int ac, char **av)
 		return (free(data.mlx), free(data.img), 1);
 	mlx_resize_hook(data.mlx, resize_window, &data);
 	init_zoom(&data.zoom);
-	mlx_key_hook(data.mlx, key_zoom_hook, &data);
+	mlx_key_hook(data.mlx, key_hook, &data);
 	print_fractol(&data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
