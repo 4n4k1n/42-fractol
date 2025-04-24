@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_zoom_hook.c                                    :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 16:39:51 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/23 14:04:03 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:56:15 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	color_keys(mlx_key_data_t keys, t_data *data)
 		color_flow(data);
 }
 
-void	key_zoom_hook(mlx_key_data_t keys, void *param)
+void	key_hook(mlx_key_data_t keys, void *param)
 {
 	t_data	*data;
 	t_cords	middle;
