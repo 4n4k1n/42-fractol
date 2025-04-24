@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 10:55:14 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/24 17:30:50 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/24 21:21:38 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 int init_mandelbrot(t_data *data)
 {
+	data->func_ptr_index = 0;
 	data->func_ptr = mandelbrot;
 	return (1);
 }
 
 int	init_burningship(t_data *data)
 {
+	data->func_ptr_index = 1;
 	data->func_ptr = burningship;
 	return (1);
 }
@@ -50,6 +52,7 @@ int	init_julia_set(int ac, char **av, t_data *data)
 
 	real = 0;
 	imag = 0;
+	data->func_ptr_index = 1;
 	data->func_ptr = julia;
 	if (ac == 3 || ac == 4)
 	{
