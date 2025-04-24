@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/24 17:36:30 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/24 19:14:44 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_data
     t_zoom      zoom;
     t_rgb       rgb;
     t_func_ptr  func_ptr;
+	int			func_ptr_index;
 }               t_data;
 
 // helpers
@@ -96,7 +97,7 @@ void		clac_pixel(t_complx z, t_complx c, t_cords cords, t_data *img);
 void		print_fractol(t_data *data);
 
 // hooks
-void		key_zoom_hook(mlx_key_data_t keydata, void *param);
+void		key_hook(mlx_key_data_t keydata, void *param);
 void		resize_window(int32_t width, int32_t height, void *param);
 
 // functions for func ptr
@@ -109,5 +110,7 @@ t_complx	*get_set(void);
 void		init_set(double real, double imag);
 
 int			get_color(int i, t_data *data);
+
+void 		change_fractol(t_data *data);
 
 #endif
