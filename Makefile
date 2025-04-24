@@ -6,7 +6,7 @@
 #    By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 20:58:57 by anakin            #+#    #+#              #
-#    Updated: 2025/04/21 18:34:14 by apregitz         ###   ########.fr        #
+#    Updated: 2025/04/24 21:04:40 by apregitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,13 @@ OBJ_DIR = obj
 SRCS	:= arguments.c \
 			calc.c \
 			func_ptr.c \
-			key_zoom_hook.c \
+			key_hook.c \
 			main.c \
 			resize_hook.c \
 			zoom.c \
 			ft_strcmp.c \
-			ft_atof.c
+			ft_atof.c \
+			change_fractol.c
 
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
