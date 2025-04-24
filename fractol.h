@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/23 14:03:12 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:36:30 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #endif
 
 # ifndef MAX_ITER
-#  define MAX_ITER 128
+#  define MAX_ITER 64
 # endif
 
 typedef struct s_complx
@@ -102,9 +102,12 @@ void		resize_window(int32_t width, int32_t height, void *param);
 // functions for func ptr
 void		mandelbrot(t_data *data, t_cords cords, t_complx *z, t_complx *c);
 void		julia(t_data *data, t_cords cords, t_complx *z, t_complx *c);
+void		 burningship(t_data *data, t_cords cords, t_complx *z, t_complx *c);
 
 // functions to store the complex nbr
 t_complx	*get_set(void);
 void		init_set(double real, double imag);
+
+int			get_color(int i, t_data *data);
 
 #endif
