@@ -6,12 +6,24 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 10:55:14 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/21 18:57:26 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:30:50 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 #include <stdio.h>
+
+int init_mandelbrot(t_data *data)
+{
+	data->func_ptr = mandelbrot;
+	return (1);
+}
+
+int	init_burningship(t_data *data)
+{
+	data->func_ptr = burningship;
+	return (1);
+}
 
 t_complx	*get_set(void)
 {
@@ -28,6 +40,8 @@ void	init_set(double real, double imag)
 	set->imag = imag;
 	set->real = real;
 }
+
+
 
 int	init_julia_set(int ac, char **av, t_data *data)
 {
@@ -60,10 +74,10 @@ int check_arguments(int ac, char **av, t_data *data)
 	if (ac < 2)
 		return (write(1, "Invalid amount of arguments!\n", 29), 0);
 	else if (ft_strcmp("mandelbrot", av[1]) == 0)
-		data->func_ptr = mandelbrot;
+		return (init_mandelbrot(data));
 	else if (ft_strcmp("julia", av[1]) == 0)
-		return (init_julia_set(ac, av, data)	);
-	else
-		return (write(1, "Fractol not found!\n", 19), 0);
-	return (1);
+		return (init_julia_set(ac, av, data));
+	else if (ft_strcmp("burningship", av[1]) == 0)
+		return (init_burningship(data));
+	return (write(1, "Fractol not found!\n", 19), 0);
 }
