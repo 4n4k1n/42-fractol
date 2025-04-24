@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:11:02 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/23 15:21:19 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:26:41 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_color(int i, t_data *data)
 {
 	int	color;
 
-	if (i == MAX_ITER || i == 1)
+	if (i == MAX_ITER)
 		return (0x000000ff);
 	else if (data->rgb.rainbow == 't')
 		return (255 << 24 | 0 << 16 | 0 << 8 | 0xf0);
