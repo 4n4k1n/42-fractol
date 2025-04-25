@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:08:54 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/24 17:32:04 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 22:23:14 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,6 @@ t_complx	calc_zoomed_pix(t_zoom *zoom, t_cords cords)
 	new_cords.imag = (cords.y - (zoom->win_height / 2)) \
 	* zoom->scale + zoom->view_y;
 	return (new_cords);
-}
-
-void	init_zoom(t_zoom *zoom)
-{
-	zoom->scale = 0.0075;
-	zoom->view_x = 0.0;
-	zoom->view_y = 0.0;
-	zoom->win_width = WIDTH;
-	zoom->win_height = HEIGHT;
-	zoom->mouse_status = 0;
 }
 
 void	zoom_in(t_cords *mouse, t_zoom *zoom)
