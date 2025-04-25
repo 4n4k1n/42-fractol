@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/25 21:06:31 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 21:27:28 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ void		print_fractol(t_data *data);
 // hooks
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		resize_window(int32_t width, int32_t height, void *param);
-void		scroll_hook(double xdelta, double ydelta, void *param);
-void		mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
+void		scroll_hook(double x_state, double y_state, void *param);
 
 // functions for func ptr
 void		mandelbrot(t_data *data, t_cords cords, t_complx *z, t_complx *c);

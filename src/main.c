@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:00:05 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/25 20:48:34 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 21:33:03 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	main(int ac, char **av)
 	init_zoom(&data.zoom);
 	mlx_key_hook(data.mlx, key_hook, &data);
 	mlx_scroll_hook(data.mlx, &scroll_hook, &data);
-    mlx_mouse_hook(data.mlx, &mouse_hook, &data);
 	print_fractol(&data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
