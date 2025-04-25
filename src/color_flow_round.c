@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 22:26:00 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 23:43:29 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/26 00:40:24 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	increase_color_part(t_color_byte *byte)
 {
 	if (byte->state)
 	{
-		byte->color += 0.05;
-		if (byte->color + 0.05 > 1.0)
+		byte->color += 0.07;
+		if (byte->color + 0.07 > 1.0)
 			byte->state = 0;
 	}
 	else
 	{
-		byte->color -= 0.05;
-		if (byte->color - 0.05 < 0.0)
+		byte->color -= 0.07;
+		if (byte->color - 0.07 < 0.0)
 			byte->state = 1;
 	}
 }
