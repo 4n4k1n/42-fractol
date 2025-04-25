@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 16:39:51 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/24 19:12:25 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 22:29:11 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,6 @@ static void	move_keys(mlx_key_data_t keys, t_data *data)
 		data->zoom.view_x += 15 * data->zoom.scale;
 	else if (keys.key == MLX_KEY_LEFT)
 		data->zoom.view_x -= 15 * data->zoom.scale;
-}
-
-void	increase_color_part(t_color_byte *byte)
-{
-	if (byte->state)
-	{
-		byte->color += 0.05;
-		if (byte->color + 0.05 > 1.0)
-			byte->state = 0;
-	}
-	else
-	{
-		byte->color -= 0.05;
-		if (byte->color - 0.05 < 0.0)
-			byte->state = 1;
-	}
-}
-
-void	color_flow(t_data *data)
-{
-	increase_color_part(&(data->rgb.r));
-	increase_color_part(&(data->rgb.g));
-	increase_color_part(&(data->rgb.b));
 }
 
 static void	color_keys(mlx_key_data_t keys, t_data *data)
