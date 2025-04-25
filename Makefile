@@ -6,12 +6,12 @@
 #    By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 20:58:57 by anakin            #+#    #+#              #
-#    Updated: 2025/04/24 21:04:40 by apregitz         ###   ########.fr        #
+#    Updated: 2025/04/25 21:05:48 by apregitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= fractol
-CFLAGS	:= -Wall -Wextra -Werror -Wunreachable-code -Ofast
+CFLAGS	:= -Wall -Wextra -Werror -Wunreachable-code -Ofast -march=native -mtune=native -flto -funroll-loops
 LIBMLX	:= ./MLX42
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
@@ -29,7 +29,8 @@ SRCS	:= arguments.c \
 			zoom.c \
 			ft_strcmp.c \
 			ft_atof.c \
-			change_fractol.c
+			change_fractol.c \
+			mouse_hook.c
 
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
