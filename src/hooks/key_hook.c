@@ -6,13 +6,13 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 16:39:51 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:29:11 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 22:45:48 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-static void change_fractol_keys(mlx_key_data_t keys, t_data *data)
+static void	change_fractol_keys(mlx_key_data_t keys, t_data *data)
 {
 	if (keys.key == MLX_KEY_N)
 		change_fractol(data);
@@ -63,7 +63,8 @@ void	key_hook(mlx_key_data_t keys, void *param)
 		if (keys.key == MLX_KEY_R)
 			data->rgb.rainbow *= -1;
 		mlx_delete_image(data->mlx, data->img);
-		data->img = mlx_new_image(data->mlx, data->zoom.win_width, data->zoom.win_height);
+		data->img = mlx_new_image(data->mlx, data->zoom.win_width, \
+			data->zoom.win_height);
 		mlx_image_to_window(data->mlx, data->img, 0, 0);
 		print_fractol(data);
 	}

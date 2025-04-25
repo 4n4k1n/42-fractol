@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 22:14:13 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:14:57 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 22:45:44 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	init_julia_set(int ac, char **av, t_data *data)
 {
-	double real;
-	double imag;
+	double	real;
+	double	imag;
 
 	real = 0;
 	imag = 0;

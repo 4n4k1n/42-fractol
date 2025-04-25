@@ -6,13 +6,13 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 22:29:43 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:30:44 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 22:42:23 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fractol.h"
 
-int get_byte(double i)
+int	get_byte(double i)
 {
 	return ((i * 255 / MAX_ITER));
 }

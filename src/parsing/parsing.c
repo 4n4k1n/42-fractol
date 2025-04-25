@@ -6,13 +6,13 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 10:55:14 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:19:39 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 22:46:01 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-int check_arguments(int ac, char **av, t_data *data)
+int	check_arguments(int ac, char **av, t_data *data)
 {
 	init_set(-0.7, 0.27015);
 	if (ac < 2)

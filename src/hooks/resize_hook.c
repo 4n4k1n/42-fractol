@@ -6,15 +6,15 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 17:16:55 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/20 17:21:44 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 22:45:46 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void resize_window(int32_t width, int32_t height, void *param)
+void	resize_window(int32_t width, int32_t height, void *param)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = param;
 	data->zoom.win_height = height;
