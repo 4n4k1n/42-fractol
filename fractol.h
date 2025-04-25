@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/25 21:27:28 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 21:37:42 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ typedef struct s_data
     t_func_ptr  func_ptr;
 	int			func_ptr_index;
 }               t_data;
+
+// init functions
+void	init_rgb(t_rgb *rgb);
 
 // helpers
 int			ft_strcmp(const char *s1, const char *s2);

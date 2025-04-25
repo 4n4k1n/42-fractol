@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 10:55:14 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/24 21:21:38 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 21:42:22 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	init_julia_set(int ac, char **av, t_data *data)
 
 int check_arguments(int ac, char **av, t_data *data)
 {
+	init_set(-0.7, 0.27015);
 	if (ac < 2)
 		return (write(1, "Invalid amount of arguments!\n", 29), 0);
 	else if (ft_strcmp("mandelbrot", av[1]) == 0)

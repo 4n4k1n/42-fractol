@@ -6,7 +6,7 @@
 #    By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 20:58:57 by anakin            #+#    #+#              #
-#    Updated: 2025/04/25 21:05:48 by apregitz         ###   ########.fr        #
+#    Updated: 2025/04/25 21:39:30 by apregitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS	:= arguments.c \
 			ft_strcmp.c \
 			ft_atof.c \
 			change_fractol.c \
-			mouse_hook.c
+			mouse_hook.c \
+			init.c
 
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
