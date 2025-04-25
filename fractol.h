@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/25 21:37:42 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/26 00:27:14 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,39 +82,54 @@ typedef struct s_data
 	int			func_ptr_index;
 }               t_data;
 
-// init functions
-void	init_rgb(t_rgb *rgb);
+// math
+t_complx	calc_next_iter_num(t_complx z, t_complx c);
+void		clac_pixel(t_complx z, t_complx c, t_cords cords, t_data *data);
+t_complx	calc_zoomed_pix(t_zoom *zoom, t_cords cords);
+
+// key hook helper
+void		change_fractol(t_data *data);
+
+// color
+int			rainbow(t_data *data, int i);
+void		increase_color_part(t_color_byte *byte);
+void		color_flow(t_data *data);
+int			get_byte(double i);
+int			get_color(int i, t_data *data);
 
 // helpers
-int			ft_strcmp(const char *s1, const char *s2);
 int			ft_atof(char *str, double *result);
+int			ft_strcmp(const char *s1, const char *s2);
 
-// fractol functions
-int			check_arguments(int ac, char **av, t_data *data);
-t_complx	calc_zoomed_pix(t_zoom *zoom, t_cords cords);
-void		init_zoom(t_zoom *zoom);
-void		zoom_in(t_cords *mouse, t_zoom *zoom);
-void		zoom_out(t_cords *mouse, t_zoom *zoom);
-t_complx	calc_next_iter_num(t_complx z, t_complx c);
-void		clac_pixel(t_complx z, t_complx c, t_cords cords, t_data *img);
-void		print_fractol(t_data *data);
-
-// hooks
-void		key_hook(mlx_key_data_t keydata, void *param);
-void		resize_window(int32_t width, int32_t height, void *param);
-void		scroll_hook(double x_state, double y_state, void *param);
-
-// functions for func ptr
+// fractols
 void		mandelbrot(t_data *data, t_cords cords, t_complx *z, t_complx *c);
 void		julia(t_data *data, t_cords cords, t_complx *z, t_complx *c);
 void		burningship(t_data *data, t_cords cords, t_complx *z, t_complx *c);
 
-// functions to store the complex nbr
-t_complx	*get_set(void);
+// init
+int			init_burningship(t_data *data);
+int			init_julia_set(int ac, char **av, t_data *data);
+int			init_mandelbrot(t_data *data);
+void		init_rgb(t_rgb *rgb);
 void		init_set(double real, double imag);
+void		init_zoom(t_zoom *zoom);
 
-int			get_color(int i, t_data *data);
+// set getter
+t_complx	*get_set(void);
 
-void 		change_fractol(t_data *data);
+// hooks
+void		key_hook(mlx_key_data_t keys, void *param);
+void		scroll_hook(double x_state, double y_state, void *param);
+void		resize_window_hook(int32_t width, int32_t height, void *param);
+
+// parsing
+int			check_arguments(int ac, char **av, t_data *data);
+
+// print
+void		print_fractol(t_data *data);
+
+// zoom
+void		zoom_in(t_cords *mouse, t_zoom *zoom);
+void		zoom_out(t_cords *mouse, t_zoom *zoom);
 
 #endif
