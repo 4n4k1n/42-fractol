@@ -6,11 +6,11 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 22:14:13 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:45:44 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 23:43:50 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
+#include "../fractol.h"
 
 int	init_julia_set(int ac, char **av, t_data *data)
 {

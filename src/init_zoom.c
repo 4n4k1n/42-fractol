@@ -6,11 +6,11 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 22:22:51 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:23:07 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/25 23:44:05 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
+#include "../fractol.h"
 
 void	init_zoom(t_zoom *zoom)
 {

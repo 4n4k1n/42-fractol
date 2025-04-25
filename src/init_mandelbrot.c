@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_flow_round.c                                 :+:      :+:    :+:   */
+/*   init_mandelbrot.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 22:26:00 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:28:17 by apregitz         ###   ########.fr       */
+/*   Created: 2025/04/25 22:16:47 by apregitz          #+#    #+#             */
+/*   Updated: 2025/04/25 23:43:54 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
+#include "../fractol.h"
 
-void	increase_color_part(t_color_byte *byte)
+int	init_mandelbrot(t_data *data)
 {
-	if (byte->state)
-	{
-		byte->color += 0.05;
-		if (byte->color + 0.05 > 1.0)
-			byte->state = 0;
-	}
-	else
-	{
-		byte->color -= 0.05;
-		if (byte->color - 0.05 < 0.0)
-			byte->state = 1;
-	}
-}
-
-void	color_flow(t_data *data)
-{
-	increase_color_part(&(data->rgb.r));
-	increase_color_part(&(data->rgb.g));
-	increase_color_part(&(data->rgb.b));
+	data->func_ptr_index = 0;
+	data->func_ptr = mandelbrot;
+	return (1);
 }

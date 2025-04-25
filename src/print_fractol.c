@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mandelbrot.c                                  :+:      :+:    :+:   */
+/*   print_fractol.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 22:16:47 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:45:42 by apregitz         ###   ########.fr       */
+/*   Created: 2025/04/25 22:11:56 by apregitz          #+#    #+#             */
+/*   Updated: 2025/04/26 00:21:29 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
+#include "../fractol.h"
 
-int	init_mandelbrot(t_data *data)
+void	print_fractol(t_data *data)
 {
-	data->func_ptr_index = 0;
-	data->func_ptr = mandelbrot;
-	return (1);
+	t_cords		cords;
+	t_complx	c;
+	t_complx	z;
+
+	z.imag = 0;
+	z.real = 0;
+	cords.y = 0;
+	while (cords.y < data->zoom.win_height)
+	{
+		cords.x = 0;
+		while (cords.x < data->zoom.win_width)
+		{
+			data->func_ptr(data, cords, &z, &c);
+			cords.x++;
+		}
+		cords.y++;
+	}
 }

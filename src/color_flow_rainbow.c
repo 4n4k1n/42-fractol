@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_fractol.c                                    :+:      :+:    :+:   */
+/*   color_flow_rainbow.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 22:11:56 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:12:14 by apregitz         ###   ########.fr       */
+/*   Created: 2025/04/25 22:27:52 by apregitz          #+#    #+#             */
+/*   Updated: 2025/04/25 23:43:24 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void	print_fractol(t_data *data)
+int	rainbow(t_data *data, int i)
 {
-	t_cords		cords;
-	t_complx	c;
-	t_complx	z;
+	int		r;
+	int		g;
+	int		b;
+	double	zoom_factor;
 
-	z.imag = 0;
-	z.real = 0;
-	cords.y = 0;
-	while (cords.y < data->zoom.win_height)
-	{
-		cords.x = 0;
-		while (cords.x < data->zoom.win_width)
-		{
-			data->func_ptr(data, cords, &z, &c);
-			cords.x++;
-		}
-		cords.y++;
-	}
+	zoom_factor = -log10(data->zoom.scale) * 5;
+	r = get_byte(i * (4 + sin(zoom_factor * 1.2) * 4));
+	g = get_byte(i * (8 + sin(zoom_factor * 0.7) * 4));
+	b = get_byte(i * (12 + sin(zoom_factor * 0.9) * 4));
+	return (r << 24 | g << 16 | b << 8 | 0xf0);
 }

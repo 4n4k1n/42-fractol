@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_static_function.c                             :+:      :+:    :+:   */
+/*   color_flow_round.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 22:16:00 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 22:45:31 by apregitz         ###   ########.fr       */
+/*   Created: 2025/04/25 22:26:00 by apregitz          #+#    #+#             */
+/*   Updated: 2025/04/25 23:43:29 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
+#include "../fractol.h"
 
-t_complx	*get_set(void)
+void	increase_color_part(t_color_byte *byte)
 {
-	static t_complx	set;
-
-	return (&set);
+	if (byte->state)
+	{
+		byte->color += 0.05;
+		if (byte->color + 0.05 > 1.0)
+			byte->state = 0;
+	}
+	else
+	{
+		byte->color -= 0.05;
+		if (byte->color - 0.05 < 0.0)
+			byte->state = 1;
+	}
 }
 
-void	init_set(double real, double imag)
+void	color_flow(t_data *data)
 {
-	t_complx	*set;
-
-	set = get_set();
-	set->imag = imag;
-	set->real = real;
+	increase_color_part(&(data->rgb.r));
+	increase_color_part(&(data->rgb.g));
+	increase_color_part(&(data->rgb.b));
 }
