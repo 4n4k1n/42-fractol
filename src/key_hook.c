@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 16:39:51 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/26 14:54:06 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/26 14:59:18 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void	zoom_keys(mlx_key_data_t keys, t_data *data, t_cords middle)
 
 static void	move_keys(mlx_key_data_t keys, t_data *data)
 {
-	if (keys.key == MLX_KEY_UP)
+	if (keys.key == MLX_KEY_UP || keys.key == MLX_KEY_W)
 		data->zoom.view_y -= 15 * data->zoom.scale;
-	else if (keys.key == MLX_KEY_DOWN)
+	else if (keys.key == MLX_KEY_DOWN || keys.key == MLX_KEY_S)
 		data->zoom.view_y += 15 * data->zoom.scale;
-	else if (keys.key == MLX_KEY_RIGHT)
+	else if (keys.key == MLX_KEY_RIGHT || keys.key == MLX_KEY_D)
 		data->zoom.view_x += 15 * data->zoom.scale;
-	else if (keys.key == MLX_KEY_LEFT)
+	else if (keys.key == MLX_KEY_LEFT || keys.key == MLX_KEY_A)
 		data->zoom.view_x -= 15 * data->zoom.scale;
 }
 
