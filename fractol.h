@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/26 14:33:30 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/26 23:02:11 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 # ifndef HEIGHT
 #  define HEIGHT 500
-#endif
+# endif
 
 # ifndef MAX_ITER
 #  define MAX_ITER 128
@@ -33,31 +33,31 @@
 
 typedef struct s_complx
 {
-	double	real;
-	double	imag;
-}			t_complx;
+	double			real;
+	double			imag;
+}					t_complx;
 
 typedef struct s_cords
 {
-	int	x;
-	int	y;
-}		t_cords;
+	int				x;
+	int				y;
+}					t_cords;
 
 typedef struct s_zoom
 {
-	double	scale;
-	double	view_x;
-	double	view_y;
-	int		win_width;
-	int		win_height;
-	int		mouse_status;
-}			t_zoom;
+	double			scale;
+	double			view_x;
+	double			view_y;
+	int				win_width;
+	int				win_height;
+	int				mouse_status;
+}					t_zoom;
 
 typedef struct s_color_byte
 {
-	double	color;
-	int		state;
-}			t_color_byte;
+	double			color;
+	int				state;
+}					t_color_byte;
 
 typedef struct s_rgb
 {
@@ -68,19 +68,19 @@ typedef struct s_rgb
 	int				mode;
 }					t_rgb;
 
-struct s_data;
+struct			s_data;
 
-typedef void (*t_func_ptr)(struct s_data *, t_cords, t_complx *, t_complx *);
+typedef void	(*t_func_ptr)(struct s_data *, t_cords, t_complx *, t_complx *);
 
 typedef struct s_data
 {
-    mlx_t       *mlx;
-    mlx_image_t *img;
-    t_zoom      zoom;
-    t_rgb       rgb;
-    t_func_ptr  func_ptr;
-	int			func_ptr_index;
-}               t_data;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	t_zoom			zoom;
+	t_rgb			rgb;
+	t_func_ptr		func_ptr;
+	int				func_ptr_index;
+}					t_data;
 
 // recreate img
 int			recreate_img(t_data *data);
