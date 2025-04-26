@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:41:49 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/26 14:31:23 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/26 14:49:30 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	scroll_hook(double x_state, double y_state, void *param)
 	else if (y_state < 0)
 		zoom_out(&mouse, &data->zoom);
 	if (!recreate_img(data))
-		return (mlx_terminate(data->mlx));
+		return ;
 	print_fractol(data);
 }
