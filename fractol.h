@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:43:01 by anakin            #+#    #+#             */
-/*   Updated: 2025/04/26 00:27:14 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/26 14:33:30 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ typedef struct s_data
     t_func_ptr  func_ptr;
 	int			func_ptr_index;
 }               t_data;
+
+// recreate img
+int			recreate_img(t_data *data);
 
 // math
 t_complx	calc_next_iter_num(t_complx z, t_complx c);
