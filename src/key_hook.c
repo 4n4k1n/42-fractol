@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 16:39:51 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/26 14:49:39 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/26 14:54:06 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	key_hook(mlx_key_data_t keys, void *param)
 		change_fractol_keys(keys, data);
 		if (keys.key == MLX_KEY_R)
 			data->rgb.rainbow *= -1;
-		if (!recreate_img(data))	
+		if (!recreate_img(data))
 			return ;
 		print_fractol(data);
 	}
