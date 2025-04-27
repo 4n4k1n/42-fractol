@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 22:14:13 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/25 23:43:50 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/04/27 11:04:27 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	init_julia_set(int ac, char **av, t_data *data)
 	if (ac == 3 || ac == 4)
 	{
 		if (!ft_atof(av[2], &real))
-			return (write(1, "Invalid argument!\n", 18), 0);
+			return (0);
 		if (ac == 4)
 		{
 			if (!ft_atof(av[3], &imag))
-				return (write(1, "Invalid argument!\n", 18), 0);
+				return (0);
 			init_set(real, imag);
 		}
 		else
