@@ -6,7 +6,7 @@
 /*   By: apregitz <apregitz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:56:13 by apregitz          #+#    #+#             */
-/*   Updated: 2025/04/21 18:47:11 by apregitz         ###   ########.fr       */
+/*   Updated: 2025/06/01 11:10:13 by apregitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_atof(char *str, double *result)
 		digits *= 10;
 	}
 	if (*str == '\0')
-		*result = sign * (*result) / digits;
+		*result = (*result) / digits;
 	else
 		return (0);
 	return (1);
